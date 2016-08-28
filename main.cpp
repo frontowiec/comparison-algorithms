@@ -4,6 +4,16 @@
 
 using namespace std;
 
+double getUnixTime(void)
+{
+    struct timespec tv;
+
+    if(clock_gettime(CLOCK_REALTIME, &tv) != 0) return 0;
+
+    return (tv.tv_sec + (tv.tv_nsec / 1000.0));
+}
+
+
 int main() {
     string str;
     cin >> str;
@@ -17,15 +27,24 @@ int main() {
     }
 
     cout << "Heap sort" << endl;
+
+    double start_time1 = getUnixTime();
     heapSort(data1, str.length() - 1);
+    double stop_time1 = getUnixTime();
+
     cout << endl;
 
     cout << "Quick sort" << endl;
     cout << endl;
 
     cout << "Bubble sort" << endl;
+    double start_time3 = getUnixTime();
     bubbleSort(data3, str.length() - 1);
+    double stop_time3 = getUnixTime();
     cout << endl;
+
+    cout << "Heap sort execution time (ms): " << stop_time1-start_time1 << endl;
+    cout << "Bubble sort execution time (ms): " << stop_time3-start_time3 << endl;
 
     return 0;
 }
