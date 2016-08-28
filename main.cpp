@@ -1,57 +1,31 @@
 #include <iostream>
+#include "heap.h"
+#include "bubble.h"
 
 using namespace std;
-
-//TODO: nie wiem jak to uproscic
-void heapify(int heap[], int length) {
-    int c = length;
-    while (c >= 0) {
-        for (int i = length; i >= 0; i--) {
-            if (i > 0) {
-                int parent = heap[(i - 1) / 2];
-                int child = heap[i];
-                if (parent < child) {
-                    heap[i] = parent;
-                    heap[(i - 1) / 2] = child;
-                }
-            }
-        }
-
-        c--;
-    }
-}
-
-void heapSort (int heap[], int length) {
-    int sortingHeap[length];
-    int l = length+1;
-    while(length >= 0){
-        heapify(heap, length);
-        sortingHeap[length] = heap[0];
-
-        heap[0] = heap[length];
-        heap[length] = NULL;
-
-        length--;
-    }
-
-    for (int i = 0; i < l; i++) {
-        cout << sortingHeap[i] << " | ";
-    }
-
-    cout << endl;
-
-
-}
-
 
 int main() {
     string str;
     cin >> str;
-    int heap[str.length()];
+    int data1[str.length()];
+    int data2[str.length()];
+    int data3[str.length()];
     for (int i = 0; i < str.length(); i++) {
-        heap[i] = (int) str[i] - '0';
+        data1[i] = (int) str[i] - '0';
+        data2[i] = (int) str[i] - '0';
+        data3[i] = (int) str[i] - '0';
     }
-    heapSort(heap, str.length()-1);
+
+    cout << "Heap sort" << endl;
+    heapSort(data1, str.length() - 1);
+    cout << endl;
+
+    cout << "Quick sort" << endl;
+    cout << endl;
+
+    cout << "Bubble sort" << endl;
+    bubbleSort(data3, str.length() - 1);
+    cout << endl;
 
     return 0;
 }
