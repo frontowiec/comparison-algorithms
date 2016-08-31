@@ -3,5 +3,5 @@ project(algorytmy)
 
 set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -std=c++11")
 
-set(SOURCE_FILES main.cpp heap.h heap.cpp bubble.h bubble.cpp)
+set(SOURCE_FILES main.cpp heap.h heap.cpp bubble.h bubble.cpp quicksort.h quicksort.cpp)
 add_executable(algorytmy ${SOURCE_FILES})

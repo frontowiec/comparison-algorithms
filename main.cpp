@@ -1,6 +1,7 @@
 #include <iostream>
 #include "heap.h"
 #include "bubble.h"
+#include "quicksort.h"
 
 using namespace std;
 
@@ -12,7 +13,6 @@ double getUnixTime(void)
 
     return (tv.tv_sec + (tv.tv_nsec / 1000.0));
 }
-
 
 int main() {
     string str;
@@ -35,6 +35,13 @@ int main() {
     cout << endl;
 
     cout << "Quick sort" << endl;
+    double start_time2 = getUnixTime();
+    quicksort(data2, 0, str.length()-1);
+    for(int i = 0; i < str.length(); i++){
+        cout << data2[i] << " | ";
+    }
+    cout << endl;
+    double stop_time2 = getUnixTime();
     cout << endl;
 
     cout << "Bubble sort" << endl;
@@ -44,6 +51,7 @@ int main() {
     cout << endl;
 
     cout << "Heap sort execution time (ms): " << stop_time1-start_time1 << endl;
+    cout << "Quick sort execution time (ms): " << stop_time2-start_time2 << endl;
     cout << "Bubble sort execution time (ms): " << stop_time3-start_time3 << endl;
 
     return 0;
